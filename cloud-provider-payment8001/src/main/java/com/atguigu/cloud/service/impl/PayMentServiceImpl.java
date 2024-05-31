@@ -11,13 +11,20 @@ import javax.annotation.Resource;
 public class PayMentServiceImpl implements PayMentService {
     @Resource
     private PaymentDao paymentDao;
+
     @Override
+//    @Transactional
     public int create(Payment payment) {
-        return paymentDao.create(payment);
+        ThreadLocal<String> thread = new ThreadLocal<String>();
+        int i = paymentDao.create(payment);
+        getPaymentById(i);
+        return i;
     }
 
     @Override
-    public Payment getPaymentById(Long id) {
-        return paymentDao.getPaymentById(id);
+//    @Transactional(propagation= Propagation.NESTED)
+    public Payment getPaymentById(int id) {
+        Payment paymentById = paymentDao.getPaymentById(id);
+        return paymentById;
     }
 }

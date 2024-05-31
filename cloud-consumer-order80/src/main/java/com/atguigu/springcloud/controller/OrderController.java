@@ -1,28 +1,34 @@
 package com.atguigu.springcloud.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
+import com.atguigu.springcloud.service.PaymentFeignService;
+import com.atguigu.springcloud.thread.AsyncTask;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
-
-import javax.annotation.Resource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
 public class OrderController {
-    public static final String PAYMENT_URL="http://CLOUD-PAYMENT-SERVICE";
-    @Resource
-    private RestTemplate restTemplate;
 
-    @GetMapping("/consumer/payment/create")
-    public CommonResult<Payment> create(Payment payment){
-        return restTemplate.postForObject(PAYMENT_URL+"/payment/create",payment, CommonResult.class);
-    }
+    @Autowired
+    PaymentFeignService orderFeignService;
+    @Autowired
+    AsyncTask asyncTask;
+
+//    @GetMapping("/consumer/payment/create")
+//    public CommonResult<Payment> create(Payment payment){
+//        return restTemplate.postForObject(PAYMENT_URL+"/payment/create",payment, CommonResult.class);
+//    }
     @GetMapping("/consumer/payment/get/{id}")
-    public CommonResult<Payment> create(@PathVariable("id") Long id ){
-        return restTemplate.getForObject(PAYMENT_URL+"/payment/get/"+id,CommonResult.class);
+    public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id ){
+        return orderFeignService.getPaymentById(id);
+    }
+    @PostMapping(value = "/payment/create")
+    public CommonResult create(@RequestBody Payment payment) {
+        log.info("*****插入结果" + JSONObject.toJSONString(payment));
+        return orderFeignService.create(payment);
     }
 }

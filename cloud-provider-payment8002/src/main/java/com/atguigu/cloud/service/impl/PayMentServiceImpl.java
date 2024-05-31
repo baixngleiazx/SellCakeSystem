@@ -11,13 +11,14 @@ import javax.annotation.Resource;
 public class PayMentServiceImpl implements PayMentService {
     @Resource
     private PaymentDao paymentDao;
-    @Override
+
     public int create(Payment payment) {
         return paymentDao.create(payment);
     }
 
-    @Override
-    public Payment getPaymentById(Long id) {
-        return paymentDao.getPaymentById(id);
+
+    public Payment getPaymentById(int id) {
+        Payment payment = paymentDao.getPaymentById(id);
+        return payment;
     }
 }
