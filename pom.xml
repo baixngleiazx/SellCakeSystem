@@ -15,6 +15,11 @@
         <module>cloud-api-commons</module>
         <module>cloud-eureka-server7003</module>
         <module>cloud-provider-payment8002</module>
+        <module>cloud-provider-user</module>
+        <module>cloud-provider-inventory</module>
+        <module>cloud-provider-marke</module>
+        <module>cloud-provider-item</module>
+        <module>cloud-provider-outh2</module>
     </modules>
 
 

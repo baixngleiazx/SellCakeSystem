@@ -9,8 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 
-@Controller
-@ResponseBody
+@RestController
+@RequestMapping("paymentController")
 @Slf4j
 public class PaymentController {
     @Resource

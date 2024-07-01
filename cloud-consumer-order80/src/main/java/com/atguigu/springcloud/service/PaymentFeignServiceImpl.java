@@ -6,7 +6,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PaymentFeignServiceImpl implements PaymentFeignService {
-    public CommonResult getPaymentById(Long id) {
+
+
+    @Override
+    public CommonResult getPaymentById(int id) {
         return new CommonResult(404, "服务熔断");
     }
 

@@ -23,7 +23,7 @@ public class OrderController {
 //        return restTemplate.postForObject(PAYMENT_URL+"/payment/create",payment, CommonResult.class);
 //    }
     @GetMapping("/consumer/payment/get/{id}")
-    public CommonResult<Payment> getPaymentById(@PathVariable("id") Long id ){
+    public CommonResult<Payment> getPaymentById(@PathVariable("id") int id ){
         return orderFeignService.getPaymentById(id);
     }
     @PostMapping(value = "/payment/create")
