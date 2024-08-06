@@ -1,5 +1,5 @@
 server:
-    port: 9528
+    port: 8002
 
 
 spring:
@@ -23,7 +23,7 @@ spring:
    datasource:
        type: com.alibaba.druid.pool.DruidDataSource
        driver-class-name: com.mysql.jdbc.Driver
-       url: jdbc:mysql://localhost:3306/db2019?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+       url: jdbc:mysql://localhost:3306/db2019?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
        username: root
        password: 123456
 
@@ -51,18 +51,7 @@ mybatis:
       mapper-locations: classpath:mapper/*.xml
       type-aliases-package: com.atguigu.springcloud.entities
 
-security:
-  oauth2:
-    client:
-      client-id: webapp
-      client-secret: 654321
-      #Token获取地址
-      access-token-uri: http://localhost:8110/sso/oauth/token
-      #验证页面地址
-      user-authorization-uri: http://localhost:8110/sso/oauth/authorize
-    resource:
-      #Token信息获取和校验地址
-      token-info-uri: http://localhost:8110/sso/oauth/check_token
+
 
 
 

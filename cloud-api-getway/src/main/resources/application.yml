@@ -1,0 +1,38 @@
+server:
+  port: 8888
+spring:
+   application:
+      name: cloud-gateway-service
+   cloud:
+    gateway:
+      discovery:
+        locator:
+            enabled: true
+      routes:
+        - id: cloud-consumer-service
+          uri: lb://cloud-consumer-service
+          predicates:
+            - Path=/consumer/**
+      enabled: true
+nacos:
+      config:
+        bootstrap:
+      #开启系统启动时预读取nacos的配置，用于满足@Value注入数据的场景
+           enable: true
+    # 配置所属命名空间的id,此处我们配置名称为dev的id，可以在命名空间列表查看id的值
+        namespace: f3be4de8-02ce-4ce0-9d58-8063bb9e071f
+    # 配置所属分组
+        group: DEFAULT_GROUP
+    # 配置ID
+        data-id: com.xk.nacos.springboot
+    # 配置文件类型,对应nacos配置页面的配置格式，默认是properties
+        type: yaml
+    # nacos服务器地址
+        server-addr: localhost:8848
+    # 开启自动刷新nacos配置
+        auto-refresh: true
+    # 针对配置项同名的情况，是否允许nacos的配置覆盖本地的配置
+        remote-first: true
+
+
+

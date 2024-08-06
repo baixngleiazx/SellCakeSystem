@@ -18,10 +18,6 @@ public class OrderController {
     @Autowired
     AsyncTask asyncTask;
 
-//    @GetMapping("/consumer/payment/create")
-//    public CommonResult<Payment> create(Payment payment){
-//        return restTemplate.postForObject(PAYMENT_URL+"/payment/create",payment, CommonResult.class);
-//    }
     @GetMapping("/consumer/payment/get/{id}")
     public CommonResult<Payment> getPaymentById(@PathVariable("id") int id ){
         return orderFeignService.getPaymentById(id);

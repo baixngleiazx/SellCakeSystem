@@ -9,7 +9,6 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>cloud-provider-payment8001</module>
         <module>cloud-consumer-order80</module>
         <module>cloud-eureka-server7001</module>
         <module>cloud-api-commons</module>
@@ -20,6 +19,7 @@
         <module>cloud-provider-marke</module>
         <module>cloud-provider-item</module>
         <module>cloud-provider-outh2</module>
+        <module>cloud-api-getway</module>
     </modules>
 
 
@@ -103,6 +103,10 @@
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
             </dependency>
         </dependencies>
     </dependencyManagement>

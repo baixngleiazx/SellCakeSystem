@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @FeignClient(value = "CLOUD-PAYMENT-SERVICE",fallback = PaymentFeignServiceImpl.class)
 public interface PaymentFeignService {
-    @RequestMapping("/payment/get/{id}")
+    @RequestMapping("/paymentController/payment/get/{id}")
     CommonResult getPaymentById(@PathVariable("id") int id);
 
-    @PostMapping(value = "/payment/create")
+    @PostMapping(value = "/paymentController/payment/create")
     CommonResult create(@RequestBody Payment payment);
 }
